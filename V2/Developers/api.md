@@ -635,6 +635,14 @@ See https://github.com/ottigerb/therapy-server/wiki/API#pairs-as-parameters. Exa
 * 200 OK with a JSON like this: `{"calculation_result": OBJECT}`.
 * 500 Internal Error if the calculation's code failed with a JSON like this: `{"error": "blah blah blah"}`.
 
+## GET /patients/:patient_id/calculations/:module_identifier/:calculation_identifier/code
+
+**Parameters:** None
+
+**Responses:**
+* 200 OK with JS or Lua code as the body for debugging purposes
+* 500 Internal Error if the calculation's code failed with a JSON like this: `{"error": "blah blah blah"}`.
+
 ## GET /patients/:patient_id/calculations/:module_identifier
 
 **Parameters:** None
@@ -652,6 +660,15 @@ See https://github.com/ottigerb/therapy-server/wiki/API#pairs-as-parameters. Exa
 * 500 Internal Error if the calculation's code failed with a JSON like this: `{"error": "blah blah blah"}`.
 
 This endpoint is intended to be used on user modules, it runs the calculations with data from all patients.
+
+
+## GET /calculations/:module_identifier/:calculation_identifier/code
+
+**Parameters:** None
+
+**Responses:**
+* 200 OK with JS or Lua code as the body for debugging purposes
+* 500 Internal Error if the calculation's code failed with a JSON like this: `{"error": "blah blah blah"}`.
 
 ## GET /extra_config
 
