@@ -110,6 +110,35 @@ If a `<head>` tag is present, its contents is added to the appropriate place in 
 * **_admin:** If the name of the template (```hello_world```) contains ```_admin``` like ```hello_world_admin``` the template will be displayed to Admins only.
 * **report_only:** If the name of the template (```hello_world```) contains ```report_only``` like ```hello_world_report_only``` the template will not be displayed in the app-view. This is useful if you want to display the given templates only in "Reports".
 
+##### CSS-Print
+The following classes are available:
+
+* `no-print`: Do not print everything inside the element. This is useful for buttons or other user-inputs which are unneeded when printed. Example:
+
+```HTML
+<div class="no-print"></div>
+```
+
+* `page-break`: Adding a page-break before the element. Example:
+
+```HTML
+<div class="page-break"></div>
+```
+* `no-page-break`: Avoid a page-break inside the element. Example:
+
+```HTML
+<div class="no-page-break"></div>
+```
+
+* `nobr`: Keep text together on new lines. Example:
+
+```HTML
+<p>This is a text <span class="nobr">I do not wish to be
+broken on new lines</span></p>
+<p>Windstärke <span class="nobr">6 km/h</span></p>
+```
+
+
 
 ## pdf_template (optional, can have many)
 
