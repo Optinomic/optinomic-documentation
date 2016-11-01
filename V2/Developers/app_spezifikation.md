@@ -417,15 +417,16 @@ Example:
 ```
 [patient_group my_patient_group]
 
-sql_filter = WHERE gender = 'Male'
+sql_filter = WHERE p.gender = 'Male'
 modules_to_activate = module1,module2
 ```
 
 * `sql_filter` is some SQL code filtering the patients that should be in the group;
-* `modules_to_activate` (optional) is a comma-separated list of modules to activate for those patients;
-* `modules_to_deactivate` (optional) is for module deactivation.
+* `stay_sql_filter` is some SQL code filtering the stays the patients must be in;
+* `modules_to_activate` is a comma-separated list of modules to activate for those patients;
+* `modules_to_deactivate` is for module deactivation.
 
-For more complex queries, say a `LEFT JOIN`, you can access fields from the table `patient` with `p.`.
+For more complex queries, say a `LEFT JOIN`, you can access fields from the table `patient` with `p.`. Moreover, note that all fields are optional.
 
 ## sql_init (optional, can have many)
 

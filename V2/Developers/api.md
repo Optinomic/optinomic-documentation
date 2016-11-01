@@ -486,14 +486,14 @@ The JSON format is as such `{"headers": [HEADER], "rows": [OBJECT]}`.
 
 ## POST /patient_groups
 
-**Parameters:** `name`, `sql_filter`, `modules_to_activate` (list) and  `modules_to_deactivate` (list)
+**Parameters:** `name`, `sql_filter` (optional), `stay_sql_filter` (optional), `modules_to_activate` (list) and  `modules_to_deactivate` (list)
 
 **Responses:**
 * 400 Bad Request in case of validation error or missing parameter
 * 401 Unauthorized if not admin (as the user can write SQL)
 * 201 Created with a JSON like this: `{"patient_group": ENTITY}`
 
-The presence of `sql_filter` determines the group type: automatic or manual.
+The presence of `sql_filter` and/or `stay_sql_filter` determines the group type: automatic or manual.
 
 ## PUT /patient_groups/:patient_group_id
 
