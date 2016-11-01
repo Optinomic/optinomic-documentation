@@ -565,6 +565,21 @@ Return the list of modules installed but not yet enabled in the application.
 **Responses:**
 * 200 OK with a JSON like this: `{"module_errors": [STRINGS]}`
 
+## POST /modules/reload
+
+**Parameters:** None
+
+**Responses:**
+* 204 No content
+
+## POST /modules/:module_identifier/clear_data
+
+**Parameters:** None
+
+**Responses:**
+* 204 No content
+* 401 Unauthorized if not logged as an admin
+
 ## GET /module_activations
 
 Return the list of all module activations, that is, all the entities in the DB enabling an installed module. These entities contain an optional name overwrite for the module. Deleting one will disable the module.
@@ -595,7 +610,7 @@ Install a module and its dependencies. Because there are potentially a lot of mo
 
 ## DELETE /module_activations/:activation_id
 
-**Parameters:** None
+**Parameters:** `clear_data` (optional, boolean)
 
 **Responses:**
 * 204 No Content (no JSON) in case of success
