@@ -497,7 +497,7 @@ The presence of `sql_filter` and/or `stay_sql_filter` determines the group type:
 
 ## PUT /patient_groups/:patient_group_id
 
-**Parameters:** `name`, `sql_filter`, `modules_to_activate` (list) and  `modules_to_deactivate` (list)
+**Parameters:** `name`, `sql_filter`, `stay_sql_filter`, `modules_to_activate` (list) and  `modules_to_deactivate` (list)
 
 **Responses:**
 * 400 Bad Request in case of validation error or missing parameter
