@@ -656,7 +656,13 @@ See https://github.com/ottigerb/therapy-server/wiki/API#pairs-as-parameters. Exa
 
 **Responses:**
 * 200 OK with JS or Lua code as the body for debugging purposes
-* 500 Internal Error if the calculation's code failed with a JSON like this: `{"error": "blah blah blah"}`.
+
+## GET /patients/:patient_id/calculations/:module_identifier/:calculation_identifier/code
+
+**Parameters:** None
+
+**Responses:**
+* 200 OK with the data for the calculation
 
 ## GET /patients/:patient_id/calculations/:module_identifier
 
@@ -683,7 +689,13 @@ This endpoint is intended to be used on user modules, it runs the calculations w
 
 **Responses:**
 * 200 OK with JS or Lua code as the body for debugging purposes
-* 500 Internal Error if the calculation's code failed with a JSON like this: `{"error": "blah blah blah"}`.
+
+## GET /calculations/:module_identifier/:calculation_identifier/data
+
+**Parameters:** None
+
+**Responses:**
+* 200 OK with the data passed to the calculation
 
 ## GET /extra_config
 
