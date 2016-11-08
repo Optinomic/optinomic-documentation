@@ -148,6 +148,13 @@ It sends an email with a link to `BASE_URL/#/reset_password/USER_ID/TOKEN`. The 
 **Responses:**
 * 200 OK with a JSON like this: `{"patient": ENTITY}`.
 
+## GET /patients/cis/:pid
+
+**Parameters:** None
+
+**Responses:**
+* 200 OK with a JSON like this: `{"patient": ENTITY}`.
+
 ## GET /patients/:patient_id/full
 
 **Parameters:** None
