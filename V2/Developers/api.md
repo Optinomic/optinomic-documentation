@@ -664,7 +664,7 @@ See https://github.com/ottigerb/therapy-server/wiki/API#pairs-as-parameters. Exa
 **Responses:**
 * 200 OK with JS or Lua code as the body for debugging purposes
 
-## GET /patients/:patient_id/calculations/:module_identifier/:calculation_identifier/code
+## GET /patients/:patient_id/calculations/:module_identifier/:calculation_identifier/data
 
 **Parameters:** None
 
