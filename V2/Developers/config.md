@@ -239,7 +239,7 @@ Optional, by default: `js`. It is used to run calculations.
 
 Optional, by default: none. It contains an array of data sources as objects of the following format:
 
-```javascript
+```JSON
 {
   "identifier": "foreign_source",
   "driver": "postgresql",
@@ -251,6 +251,19 @@ Optional, by default: none. It contains an array of data sources as objects of t
   "name": "foreign_database"
 }
 ```
+
+ODBC Example:  
+
+```JSON
+{
+  "identifier": "KIS",
+  "driver": "odbc",
+  "dsn": "SOMETHING",
+  "username": "ODBC",
+  "password": "something"
+}
+```
+
 Supported drivers (with parameters):
 
 * `postgresql` (`hostname`, `port`, `username`, `password`, `name`)
