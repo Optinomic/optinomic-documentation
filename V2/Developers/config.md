@@ -251,5 +251,7 @@ Optional, by default: none. It contains an array of data sources as objects of t
   "name": "foreign_database"
 }
 ```
-Supported drivers (with parameters): `postgresql` (`hostname`, `port`,
-`username`, `password`, `name`)
+Supported drivers (with parameters):
+
+* `postgresql` (`hostname`, `port`, `username`, `password`, `name`)
+* `odbc` (`dsn`, `username`, `password`)
