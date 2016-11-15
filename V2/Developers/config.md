@@ -18,7 +18,7 @@ An object containing the connection information of the database of the following
   "user": "optinomics",
   "password": "secret",
   "name": "therapy-server_production",
-  "port": 5432      
+  "port": 5432
 }
 ```
 
@@ -230,3 +230,26 @@ The exact name of the package in the APT repository, e.g. `therapyserversupercli
 # upgrade_file
 
 Optional, by default: `/var/therapyserver/.upgrade`.
+
+# js_command
+
+Optional, by default: `js`. It is used to run calculations.
+
+# data_sources
+
+Optional, by default: none. It contains an array of data sources as objects of the following format:
+
+```javascript
+{
+  "identifier": "foreign_source",
+  "driver": "postgresql",
+  // specific to this driver:
+  "hostname": "db.foreign.net",
+  "port": 5432,
+  "username": "optinomic",
+  "password": "secret",
+  "name": "foreign_database"
+}
+```
+Supported drivers (with parameters): `postgresql` (`hostname`, `port`,
+`username`, `password`, `name`)
