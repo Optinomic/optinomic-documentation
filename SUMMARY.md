@@ -26,5 +26,6 @@
    * [3.05 | Conditions](V2/Developers/voraussetzungen.md)
    * [3.06 | Directives](V2/Developers/directives.md)
    * [3.07 | Emails (Event, Reminder)](V2/Developers/email_template.md)
+   * [3.08 | ngSurvey](V2/Developers/ng_survey.md)
 * [4.) API](V2/Developers/api.md)
 * [5.) Clinic - Configuration](V2/Developers/config.md)
