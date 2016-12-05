@@ -852,6 +852,34 @@ Possible values from `component` are `patient-groups`, `event-generator`, `resul
 **Responses:**
 * 200 OK with a JSON body like `{"access_form_responses": [ENTITIES]`
 
+## GET /permanent_tokens
+
+**Parameters:** None
+
+**Responses:**
+* 200 OK with a JSON body like `{"tokens": [{"token": TOKEN, ...}]}`
+* 401 Unauthorized if not logged in as admin
+
+## POST /permanent_tokens
+
+**Parameters:** `user_id`, `patient_id`, `role` (all optional)
+
+**Responses:**
+* 201 Created with a JSON body like `{"token": TOKEN}`
+* 401 Unauthorized if not logged in as admin
+
+For example, `user_id` would cause the token to give access to the API as this
+user would. Those fields could be combined. In case there are none, the token
+gives access to the API as an anonymous user, so there is not much you can do
+with it.
+
+## DELETE /permanent_tokens/:token
+
+**Parameters:** None
+
+**Responses:**
+* 204 No content
+
 # Examples
 
 ## Patient groups
