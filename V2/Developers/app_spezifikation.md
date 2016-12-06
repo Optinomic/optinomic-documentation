@@ -456,6 +456,10 @@ function main(token) {
 }
 ```
 
+```
+helpers.callAPI(method, path, query, body, callback)
+```
+
 Tasks can be ran via the component `task-runner` with the following command:
 
 > therapy-server-components task-runner /path/to/config.json com.optinomic.apps.some-app some-task
