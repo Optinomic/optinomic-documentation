@@ -441,3 +441,23 @@ CREATE VIEW abstract AS SELECT 1;
 This code is executed when a module is installed and is so in a schema specially created for that module. It means accessing the main tables as to be done by prefixing `public.` to their name. When returning a view/table/function created in this schema, the API does it with a special user which only has read-only access to the other schemas. This is preventing a module from modifying the API tables but also the tables from other modules.
 
 See https://www.postgresql.org/docs/current/static/ddl-schemas.html for more detals about schemas in PostgreSQL.
+
+## task (optional, can have many)
+
+Example
+
+```
+[task my_task javascript]
+
+function main(token) {
+  helpers.callAPI("GET", "/users", null, null, function (resp) {
+    console.log(resp.responseText);
+  });
+}
+```
+
+Tasks can be ran via the component `task-runner` with the following command:
+
+> therapy-server-components task-runner /path/to/config.json com.optinomic.apps.some-app some-task
+
+For tasks written in Javascript, helpers are available to call the API. You can find more information in `api/resources/task_helpers.hs`.
