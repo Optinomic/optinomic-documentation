@@ -752,6 +752,7 @@ Possible values from `component` are `patient-groups`, `event-generator`, `resul
 ## GET /users/:user_id/annotations
 ## GET /modules/:module_identifier/annotations
 ## GET /patients/:patient_id/modules/:module_identifier/annotations"
+## GET /stays/:stay_id/modules/:module_identifier/annotations"
 ## GET /modules/:module_identifier/patient_annotations"
 ## GET /annotations
 
@@ -766,6 +767,7 @@ Possible values from `component` are `patient-groups`, `event-generator`, `resul
 ## PUT /users/:user_id/annotations
 ## PUT /modules/:module_identifier/annotations
 ## PUT /patients/:patient_id/modules/:module_identifier/annotations
+## PUT /stays/:stay_id/modules/:module_identifier/annotations"
 ## PUT /annotations
 
 **Parameters:** `value`, `benign_change` (optional, default: `False`)
