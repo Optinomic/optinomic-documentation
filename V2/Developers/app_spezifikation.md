@@ -428,6 +428,23 @@ modules_to_activate = module1,module2
 
 For more complex queries, say a `LEFT JOIN`, you can access fields from the table `patient` with `p.`. Moreover, note that all fields are optional.
 
+## stay_group (optional, can have many)
+
+Example:
+
+```
+[stay_group my_stay_group]
+
+sql_filter = WHERE s.stop IS NULL
+modules_to_activate = module1,module2
+```
+
+* `sql_filter` (mandatory) is some SQL code filtering the stays that should be in the group;
+* `modules_to_activate` is a comma-separated list of modules to activate for those stays;
+* `modules_to_deactivate` is for module deactivation.
+
+For more complex queries, say a `LEFT JOIN`, you can access fields from the table `stays` with `s.`.
+
 ## sql_init (optional, can have many)
 
 Example:

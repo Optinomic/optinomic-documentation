@@ -561,6 +561,71 @@ The presence of `sql_filter` and/or `stay_sql_filter` determines the group type:
 * 400 Bad request if the patient group is automatic (i.e. has a `sql_filter`)
 * 204 No content (no JSON)
 
+## GET /stay_groups
+
+**Parameters:** None
+
+**Responses:**
+* 200 OK with a JSON like this: `{"stay_groups": [ENTITIES]}`
+
+## POST /stay_groups
+
+**Parameters:** `name`, `sql_filter` (optional), `modules_to_activate` (list) and  `modules_to_deactivate` (list)
+
+**Responses:**
+* 400 Bad Request in case of validation error or missing parameter
+* 401 Unauthorized if not admin (as the user can write SQL)
+* 201 Created with a JSON like this: `{"stay_group": ENTITY}`
+
+The presence of `sql_filter` determines the group type: automatic or manual.
+
+## PUT /stay_groups/:stay_group_id
+
+**Parameters:** `name`, `sql_filter`, `modules_to_activate` (list) and  `modules_to_deactivate` (list)
+
+**Responses:**
+* 400 Bad Request in case of validation error or missing parameter
+* 401 Unauthorized if not admin
+* 204 No Content (no JSON)
+
+## DELETE /stay_groups/:stay_group_id
+
+**Parameters:** None
+
+**Responses:**
+* 204 No Content (no JSON)
+
+## GET /stay_groups/:stay_group_id/stays
+
+**Parameters:** (see filtering parameters of GET /stays)
+
+**Responses:**
+* 200 OK with a JSON like this: `{"stays": [ENTITIES]}`
+
+## POST /stay_groups/:stay_group_id/stays
+
+**Parameters:** `stay_id`
+
+**Responses:**
+* 400 Bad request if the stay group is automatic (i.e. has a `sql_filter`)
+* 204 No content (no JSON)
+
+## DELETE /stay_groups/:stay_group_id/stays
+
+**Parameters:** `stay_id`
+
+**Responses:**
+* 400 Bad request if the stay group is automatic (i.e. has a `sql_filter`)
+* 204 No content (no JSON)
+
+## PATCH /stay_groups/:stay_group_id/stays/bulk
+
+**Parameters:** `stay_ids_to_add` (list) and `stay_ids_to_remove` (list)
+
+**Responses:**
+* 400 Bad request if the stay group is automatic (i.e. has a `sql_filter`)
+* 204 No content (no JSON)
+
 ## GET /modules
 
 **Parameters:** None
