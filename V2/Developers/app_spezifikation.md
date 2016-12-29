@@ -287,6 +287,9 @@ survey = my_survey
  * `weekday`: on a specific day of the week at a specific time;
  * `every_x_days`: every N days at a specific time;
  * `before_exit`: N days before the end of the stay at a specific time;
+ * `after_exit`: N days after the end of the stay at a specific time;
+ * `before_entry`: N days before the start of the stay at a specific time;
+ * `after_entry`: N days after the start of the stay at a specific time;
  * `unplanned`: never;
  * `on_activation`: when the module is activated for a patient;
  * `on_deactivation`: when the module is deactivated for a patient;
