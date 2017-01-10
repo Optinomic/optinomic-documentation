@@ -11,7 +11,7 @@ Bei vorliegender Berechtigung können die Patientendaten ebenfalls bearbeitet we
 
 ____
 
-![image](http://doc.optinomic.org/images/patient_info.png)
+![image](http://doc.optinomic.org/images/patient_info_edit.png)
 ____
 
 Hier können dann sämtliche Stammdaten des Patienten bearbeitet werden. Hinweis: Falls die Stammdaten von einer Schnittstelle geliefert werden, können diese Daten allenfalls durch die Schnittstelle wieder überschrieben werden. Besprechen Sie sich diesbezüglich mit Ihrem Systemadministrator.

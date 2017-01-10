@@ -4,7 +4,8 @@ Optinomic verfügt über ein Präsentations-Modus. Dieser ist besonders hilfreic
 
 
 ## Aktivieren 
-Der Präsentations-Modus kann über folgendes Icon aktiviert werden:
+Der Präsentations-Modus kann über folgendes Icon aktiviert werden:    
+
 ![image](http://doc.optinomic.org/images/presentation_mode.png)
 
 Ein aktivierter Präsentations-Modus präsentiert sich wie folgt:
@@ -32,5 +33,6 @@ ____
 Hier können Sie die gewünschte Patienten-Gruppen selektieren und mit der "Präsentation" weiterfahren.
 
 ## Dektivieren 
-Bei aktivem Präsentations-Modus kann dieser über das folgendes Icon deaktiviert werden:
+Bei aktivem Präsentations-Modus kann dieser über das folgendes Icon deaktiviert werden:    
+
 ![image](http://doc.optinomic.org/images/presentation_mode.png)
