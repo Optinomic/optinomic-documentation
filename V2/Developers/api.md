@@ -748,6 +748,15 @@ See https://github.com/ottigerb/therapy-server/wiki/API#pairs-as-parameters. Exa
 **Responses:**
 * 200 OK with the data for the calculation
 
+## POST /patients/:patient_id/calculations/:module_identifier/:calculation_identifier/recompute
+
+Mark the corresponding calculation outdated so that it has priority to be recomputed by the calculation daemon.
+
+**Parameters:** None
+
+**Responses:**
+* 204 No Content
+
 ## GET /patients/:patient_id/calculations/:module_identifier
 
 **Parameters:** None
@@ -780,6 +789,15 @@ This endpoint is intended to be used on user modules, it runs the calculations w
 
 **Responses:**
 * 200 OK with the data passed to the calculation
+
+## POST /calculations/:module_identifier/:calculation_identifier/recompute
+
+Mark the corresponding calculation outdated so that it has priority to be recomputed by the calculation daemon.
+
+**Parameters:** None
+
+**Responses:**
+* 204 No Content
 
 ## GET /extra_config
 
