@@ -434,6 +434,27 @@ Note: If no `stay_id` is given, any patient_uses_module will be deleted.
 **Responses:**
 * 200 OK with a JSON like this `{"survey_responses": [{"entity": ENTITY, "event": OBJECT}]}`
 
+## GET /survey_responses/:module_identifier/full
+
+**Parameters:** None
+
+**Responses:**
+* 200 OK with a JSON like this `{"patients": [ENTITIES], "stays": [ENTITIES], "patient_uses_modules": [ENTITIES], "events": [ENTITIES], "survey_responses": [ENTITIES], "calculations": [{"patient_id": ID, "module": "IDENTIFIER", "value": OBJECT}]}`
+
+## GET /patients/:patient_id/survey_responses/:module_identifier/full
+
+**Parameters:** None
+
+**Responses:**
+* 200 OK with a JSON body (see above)
+
+## GET /stays/:stay_id/survey_responses/:module_identifier/full
+
+**Parameters:** None
+
+**Responses:**
+* 200 OK with a JSON body (see above)
+
 ## POST /patients/:patient_id/survey_responses/:module_identifier
 
 **Parameters:** None (The body is the response's JSON)
