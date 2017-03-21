@@ -265,7 +265,21 @@ Example:
 <div>Markup of the survey</div>
 ```
 
-This section specifies the markup to be sent to the ng-survey server when creating a specific survey for the `survey` section which `id` corresponds (here `id = my_ng_survey`).
+This section specifies the markup to be sent to the ng-survey server when creating a specific survey for the `survey` section which `id` corresponds (here `id = my_ng_survey`). The contents is read as a Yate template (see `[pdf_template]`) with the following object structure:
+
+```
+{
+  "patient": ENTITY,
+  "stays": [ENTITIES],
+  "patient_uses_modules": [ENTITIES],
+  "events": [ENTITIES],
+  "survey_responses": [ENTITIES],
+  "calculations": [OBJECTS],
+  "data_as_json": ENCODED_JSON_OBJECT_WITH_THE_ABOVE_CONTENTS
+}
+```
+
+The `data_as_json` value can be used to import the object into some JS code.
 
 ## event (optional, can have many)
 
