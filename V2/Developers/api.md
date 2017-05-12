@@ -476,6 +476,23 @@ It's useful if a module wants to create a survey response directly without creat
 **Parameters:** None (The body is the response's JSON)
 
 **Responses:**
+
+## POST /patient_uses_modules/:patient_uses_module_id/fetch_survey_responses
+
+This endpoint only works with ng-survey.
+
+**Parameters:** None
+
+**Responses:**
+* 204 No Content
+
+## POST /events/:event_id/fetch_survey_response
+
+This endpoint only works with ng-survey.
+
+**Parameters:** None
+
+**Responses:**
 * 204 No Content
 
 ## POST /run_sql
