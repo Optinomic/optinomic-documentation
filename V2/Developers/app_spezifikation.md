@@ -66,7 +66,7 @@ This application does X and Y but not Z. It is inspired by the research from Pr.
 
 This section contains a long description / additional information about the app. This can be as long as needed.
 
-## readme (optional)
+## readme
 
 ```
 [readme]
