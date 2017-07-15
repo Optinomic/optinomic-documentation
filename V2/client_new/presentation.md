@@ -10,6 +10,14 @@ ____
 ![image](http://doc.optinomic.org/images/patientexplorer.png)
 ____
 
+## Zum Präsentations-Modus wechseln
+Der Präsentationsmodus kann über folgenden Knopf innerhalb der Navigationsleiste erreicht werden.
+____
+
+![image](http://doc.optinomic.org/images/switch_presentation.png)
+____
+
+
 ## Präsentations-Modus verlassen
 Um zur Hauptnavigation zurückzukehren kann der Präsentations-Modus durch das `X` oben rechts verlassen werden.
 
