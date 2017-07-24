@@ -900,7 +900,7 @@ Possible values from `component` are `patient-groups`, `event-generator`, `resul
 
 ## GET /logs
 
-**Parameters:** (all optional) `user_id`, `target_user_id`, `target_role`, `target_patient_id`, `target_patient_group_id`, `target_event_id`
+**Parameters:** (all optional) `user_id`, `target_user_id`, `target_role`, `target_patient_id`, `target_patient_group_id`, `target_event_id`, `target_module`
 
 **Responses:**
 * 200 OK with a JSON like this: `{"logs": [OBJECT]}`
