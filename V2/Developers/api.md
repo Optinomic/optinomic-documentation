@@ -863,9 +863,13 @@ Mark the corresponding calculation outdated so that it has priority to be recomp
 **Parameters:** `component`, `version` (optional, for the upgrader), `identifier` (optional, for the calculations)
 
 **Responses:**
-* 204 No Content
+* 200 OK with either `{"message": "Task launched."}` or `{"message": "Task succeeded"}`.
+* 503 Service Unavailable with `{"message": "Too many tasks are running already."}`.
+* 500 Internal Server Error with a JSON like this: `{"message": "Task failed: some error message"}`.
 
 Possible values from `component` are `patient-groups`, `event-generator`, `result-fetcher`, `app-fetcher`, `overdue-reminder`, `cis-importer`, `upgrader`, `calculations`.
+
+If a task doesn't finish within a certain delay (a few seconds), it is ran in the background and a 200 OK is returned. It does not mean the task was a success as it could fail later.
 
 ## GET /patients/:patient_id/annotations
 ## GET /patient_groups/:patient_group_id/annotations
