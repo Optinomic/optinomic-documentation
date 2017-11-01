@@ -405,15 +405,19 @@ and for user modules:
 {
   "patients": [
     {
-      "patient": ENTITY,
-      "survey_responses": [ENTITY],
-      "foreign_survey_responses": {"MODULE_IDENTIIFER": [ENTITY]},
-      "other_calculations": {"MODULE_IDENTIFIER:CALCULATION_IDENTIFIER": OBJECT},
-      "annotations": {
-        "module": OBJECT,
-        "patient": OBJECT,
-        "patient_module": OBJECT
-      }
+      "MODULE_IDENTIFIER": [
+        {
+          "patient": ENTITY,
+          "survey_responses": [ENTITY],
+          "foreign_survey_responses": {"MODULE_IDENTIIFER": [ENTITY]},
+          "other_calculations": {"MODULE_IDENTIFIER:CALCULATION_IDENTIFIER": OBJECT},
+          "annotations": {
+            "module": OBJECT,
+            "patient": OBJECT,
+            "patient_module": OBJECT
+          }
+        }
+      ]
     }
   ],
   "patient_groups": [
