@@ -702,6 +702,31 @@ Return the list of modules installed but not yet enabled in the application.
 * 204 No content
 * 401 Unauthorized if not logged as an admin
 
+## GET /modules/hotloaded
+
+**Parameters:** None
+
+**Responses:**
+* 200 OK with a JSON like this: `{"modules": ["IDENTIFIER"]}`
+
+## POST /modules/hotloaded
+
+**Parameters:** None
+
+**Responses:**
+* 400 Bad Request if the module can't be read
+* 404 Not Found if there is no such module already
+* 204 No Content if loaded
+
+The body should consist of the contents of the module to be overwritten.
+
+## DELETE /modules/hotloaded
+
+**Parameters:** None
+
+**Responses:**
+* 204 No Content
+
 ## GET /module_activations
 
 Return the list of all module activations, that is, all the entities in the DB enabling an installed module. These entities contain an optional name overwrite for the module. Deleting one will disable the module.
