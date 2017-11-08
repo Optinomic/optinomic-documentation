@@ -478,6 +478,8 @@ For more complex queries, say a `LEFT JOIN`, you can access fields from the tabl
 
 ## sql_init (optional, can have many)
 
+/!\ THIS IS DEPRECATED. SEE NEXT SECTION. /!\
+
 Example:
 
 ```
@@ -487,6 +489,22 @@ CREATE VIEW abstract AS SELECT 1;
 ```
 
 This code is executed when a module is installed and is so in a schema specially created for that module. It means accessing the main tables as to be done by prefixing `public.` to their name. When returning a view/table/function created in this schema, the API does it with a special user which only has read-only access to the other schemas. This is preventing a module from modifying the API tables but also the tables from other modules.
+
+See https://www.postgresql.org/docs/current/static/ddl-schemas.html for more detals about schemas in PostgreSQL.
+
+## sql_init (optional, can have many)
+
+Example:
+
+```
+[sql_init some_name]
+
+CREATE VIEW abstract AS SELECT 1;
+```
+
+This code is executed when a module is installed and is so in a schema specially created for that module. It means accessing the main tables as to be done by prefixing `public.` to their name. When returning a view/table/function created in this schema, the API does it with a special user which only has read-only access to the other schemas. This is preventing a module from modifying the API tables but also the tables from other modules.
+
+These sections are sorted by name alphabetically before being run.
 
 See https://www.postgresql.org/docs/current/static/ddl-schemas.html for more detals about schemas in PostgreSQL.
 
