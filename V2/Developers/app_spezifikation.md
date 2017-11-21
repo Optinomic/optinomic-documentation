@@ -531,3 +531,18 @@ Tasks can be ran via the component `task-runner` with the following command:
 > therapy-server-components task-runner /path/to/config.json com.optinomic.apps.some-app some-task
 
 For tasks written in Javascript, helpers are available to call the API. You can find more information in `api/resources/task_helpers.hs`.
+
+## data_source_query (optional, can have many)
+
+Example
+
+```
+[data_source_query kantonstatistik Polypoint 0 */12 *]
+
+SELECT 1;
+```
+
+The query will be run at the specified times (here, every 12 hours) on the given
+data source (here, `Polypoint`) and the results will be stored in a table in the
+database with the name `MODULE_IDENTIFIER_QUERY_IDENTIFIER` (here,
+`com_myorganisation_apps_example_kantonstatistik`).
