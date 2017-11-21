@@ -539,7 +539,7 @@ Example
 ```
 [data_source_query kantonstatistik Polypoint 0 */12 *]
 
-SELECT 1;
+SELECT 1
 ```
 
 The query will be run at the specified times (here, every 12 hours) on the given
