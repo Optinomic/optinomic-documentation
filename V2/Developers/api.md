@@ -185,6 +185,12 @@ It sends an email with a link to `BASE_URL/#/reset_password/USER_ID/TOKEN`. The 
 * 204 No Content if the user has access to the patient
 * 401 Unauthorized otherwise
 
+## GET /stays
+
+**Parameters:** None
+
+**Responses:**
+* 200 OK with a JSON like this: `{"stays": [ENTITIES]}`.
 
 ## POST /patients/:patient_id/stays
 
