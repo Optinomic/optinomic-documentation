@@ -513,7 +513,7 @@ See https://www.postgresql.org/docs/current/static/ddl-schemas.html for more det
 Example
 
 ```
-[task my_task javascript]
+[task my_task javascript 0 */3 1]
 
 function main(token) {
   helpers.callAPI("GET", "/users", null, null, function (resp) {
@@ -531,6 +531,8 @@ Tasks can be ran via the component `task-runner` with the following command:
 > therapy-server-components task-runner /path/to/config.json com.optinomic.apps.some-app some-task
 
 For tasks written in Javascript, helpers are available to call the API. You can find more information in `api/resources/task_helpers.hs`.
+
+The **optional** `0 */3 0` specifies when the task should be run automatically by the scheduler daemon.
 
 ## data_source_query (optional, can have many)
 
