@@ -523,6 +523,17 @@ The JSON format is as such `{"headers": [HEADER], "rows": [OBJECT]}`.
 
 The JSON format is as such `{"headers": [HEADER], "rows": [OBJECT]}`.
 
+## POST /modules/:module_identifier/data_source_queries/:dsq_identifier
+
+**Parameters:** `delimiter` (optional, default ';'), `including_headers` (for CSV, default: `True`), `format` (default: `csv`), `direct` (default: `False`)
+
+**Responses:**
+* 200 OK with the data as body if `direct` is set to `True`
+* 201 Created with a JSON like this: `{"download_url": URL}`
+* 400 Bad Request if the parameter `including_headers` is specified though the format is JSON
+
+The JSON format is as such `{"headers": [HEADER], "rows": [OBJECT]}`.
+
 ## GET /modules/:module_identifier/sql_views
 
 **Parameters:** None
