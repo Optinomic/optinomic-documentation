@@ -758,9 +758,12 @@ Return the list of all module activations, that is, all the entities in the DB e
 **Parameters:** `module_identifier`, `version`, `name_overwrite` (optional)
 
 **Responses:**
-* 400 Bad Request in case of a validation error
-* 409 Conflict in case of a problem with the module dependencies
-* 200 OK with a JSON like this: `{"module_activations": [ENTITIES]}`
+* 200 OK with a JSON like this: `{"module_activations": [ENTITIES]}`.
+* 202 Accepted if the installation is running but has not finished yet.
+* 400 Bad Request in case of a validation error.
+* 409 Conflict in case of a problem with the module dependencies.
+* 503 Service Unavailable with `{"error": "Too many tasks are running already."}`.
+* 500 Internal Server Error with a JSON like this: `{"error": "Task failed: some error message"}`.
 
 Install a module and its dependencies. Because there are potentially a lot of module activations created in the DB, a list of entities is returned.
 
@@ -905,9 +908,10 @@ Mark the corresponding calculation outdated so that it has priority to be recomp
 **Parameters:** `component`, `version` (optional, for the upgrader), `identifier` (optional, for the calculations)
 
 **Responses:**
-* 200 OK with either `{"message": "Task launched."}` or `{"message": "Task succeeded"}`.
-* 503 Service Unavailable with `{"message": "Too many tasks are running already."}`.
-* 500 Internal Server Error with a JSON like this: `{"message": "Task failed: some error message"}`.
+* 202 Accepted if the component is running but has not finished yet.
+* 204 No Conctent if the component has run and finished.
+* 503 Service Unavailable with `{"error": "Too many tasks are running already."}`.
+* 500 Internal Server Error with a JSON like this: `{"error": "Task failed: some error message"}`.
 
 Possible values from `component` are `patient-groups`, `event-generator`, `result-fetcher`, `app-fetcher`, `overdue-reminder`, `cis-importer`, `upgrader`, `calculations`.
 
