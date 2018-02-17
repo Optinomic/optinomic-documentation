@@ -1055,6 +1055,38 @@ with it.
 
 # Examples
 
+## GET /repositories
+
+**Parameters:** None
+
+**Responses:**
+* 200 OK with a JSON body like `{"available_repositories":[OBJECT],"added_repository":[{"repository":ENTITY,"from_registry":OBJECT}]}`
+
+`available_repositories` contains repositories from https://registry.optinomic.org.
+
+## POST /repositories
+
+**Parameters:** `identifier`, `repository`
+
+**Responses:**
+* 201 Created with a JSON body like `{"repository":ENTITY}`
+* 400 Bad request in case of validation error
+
+## PUT /repositories/:repository_id
+
+**Parameters:** `identifier`, `repository`
+
+**Responses:**
+* 204 No content in case of success
+* 400 Bad request in case of validation error
+
+## DELETE /repositories/:repository_id
+
+**Parameters:** None
+
+**Responses:**
+* 204 No content
+
 ## Patient groups
 
 Let's create a patient group that filters only men from Switzerland and activate the module with ID "com.example.my_app".
