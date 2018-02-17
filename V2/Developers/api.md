@@ -1053,8 +1053,6 @@ with it.
 **Responses:**
 * 204 No content
 
-# Examples
-
 ## GET /repositories
 
 **Parameters:** None
@@ -1086,6 +1084,8 @@ with it.
 
 **Responses:**
 * 204 No content
+
+# Examples
 
 ## Patient groups
 
