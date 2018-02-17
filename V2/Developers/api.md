@@ -1058,7 +1058,7 @@ with it.
 **Parameters:** None
 
 **Responses:**
-* 200 OK with a JSON body like `{"available_repositories":[OBJECT],"added_repository":[{"repository":ENTITY,"from_registry":OBJECT}]}`
+* 200 OK with a JSON body like `{"available_repositories":[OBJECT],"added_repositories":[{"repository":ENTITY,"from_registry":OBJECT}]}`
 
 `available_repositories` contains repositories from https://registry.optinomic.org.
 
