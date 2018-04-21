@@ -9,27 +9,6 @@ In case of errors (4xx or 5xx), a JSON object is returned with an error key, e.g
     $ curl localhost:3001/signin -X POST -d 'email=admin@optinomics.com'
     {"error":"Parameter \"password\" is missing."}
 
-## Entities vs objects
-
-**Changed: all endpoints return entities**
-
-Depending on the context, elements such as patients, modules, etc. are returned as-is or as an entity. For instance, when requesting a specific patient with `/patients/42`, it is useless to return the ID 42 so the patient is returned like this:
-
-    {"patient":{"email":"a@b.com",...}}
-
-On the other hand, when requesting the watchlist with `/watchlist/1`, we need to return patient IDs so the API returns entities like this:
-
-    {
-      "patients": [
-        {
-          "id": 42,
-          "data": { "email": "a@b.com", ... }
-        }, ...
-      ]
-    }
-
-In the documentation thereafter, it will be shown with `ENTITY` and `OBJECT`.
-
 ## Lists as parameters
 
 When the following documentation specifies a parameter such as `modules` as a parameter being a list, the client should set the parameter `modules_count` to the number of items in the list and `modulesN` to the value for each item. For example, if `modules = ["first", "second"]`, the corresponding query string is `modules_count=2&modules0=first&modules1=second`.
@@ -681,35 +660,15 @@ The presence of `sql_filter` determines the group type: automatic or manual.
 * 400 Bad request if the stay group is automatic (i.e. has a `sql_filter`)
 * 204 No content (no JSON)
 
-## GET /modules
+## GET /available_modules
+
+Return the list of modules which have been built and can be installed (or have
+been installed) on this server together with all the built versions.
 
 **Parameters:** None
 
 **Responses:**
-* 200 OK with a JSON like this: `{"patient_modules": [OBJECT], "user_modules": [OBJECTS]}`
-
-## GET /modules/disabled
-
-Return the list of modules installed but not yet enabled in the application.
-
-**Parameters:** None
-
-**Responses:**
-* 200 OK with a JSON like this: `{"disabled_patient_modules": [OBJECTS], "disabled_user_modules": [OBJECT]}`
-
-## GET /modules/errors
-
-**Parameters:** None
-
-**Responses:**
-* 200 OK with a JSON like this: `{"module_errors": [STRINGS]}`
-
-## POST /modules/reload
-
-**Parameters:** None
-
-**Responses:**
-* 204 No content
+* 200 OK with a JSON like this: `{"modules": [{"identifier": "IDENTIFIER", "versions": [{"version": "VERSION", "latest": "HASH", "hashes": ["HASHES"]}]}, "installed": {"version":"VERSION", "hash":"HASH"}]}`
 
 ## POST /modules/:module_identifier/clear_data
 
@@ -719,43 +678,18 @@ Return the list of modules installed but not yet enabled in the application.
 * 204 No content
 * 401 Unauthorized if not logged as an admin
 
-## GET /modules/hotloaded
-
-**Parameters:** None
-
-**Responses:**
-* 200 OK with a JSON like this: `{"modules": ["IDENTIFIER"]}`
-
-## POST /modules/hotloaded
-
-**Parameters:** None
-
-**Responses:**
-* 400 Bad Request if the module can't be read
-* 404 Not Found if there is no such module already
-* 204 No Content if loaded
-
-The body should consist of the contents of the module to be overwritten.
-
-## DELETE /modules/hotloaded
-
-**Parameters:** None
-
-**Responses:**
-* 204 No Content
-
 ## GET /module_activations
 
-Return the list of all module activations, that is, all the entities in the DB enabling an installed module. These entities contain an optional name overwrite for the module. Deleting one will disable the module.
+Return the list of all module activations, that is, all the entities in the DB enabling an installed module together with the module. These entities contain an optional name overwrite for the module. Deleting one will disable the module.
 
 **Parameters:** None
 
 **Responses:**
-* 200 OK with a JSON like this: `{"module_activations": [ENTITIES]}`
+* 200 OK with a JSON like this: `{"patient_modules": [{"module": OBJECT, "module_activation": ENTITY}], "user_modules": [{"module": OBJECT, "module_activation": ENTITY}], "errors": [{"error": "ERROR", "module_activation": ENTITY}]}`
 
 ## POST /module_activations
 
-**Parameters:** `module_identifier`, `version`, `name_overwrite` (optional)
+**Parameters:** `module_identifier`, `version`, `name_overwrite` (optional), `hash` (optional)
 
 **Responses:**
 * 200 OK with a JSON like this: `{"module_activations": [ENTITIES]}`.
@@ -765,15 +699,17 @@ Return the list of all module activations, that is, all the entities in the DB e
 * 503 Service Unavailable with `{"error": "Too many tasks are running already."}`.
 * 500 Internal Server Error with a JSON like this: `{"error": "Task failed: some error message"}`.
 
-Install a module and its dependencies. Because there are potentially a lot of module activations created in the DB, a list of entities is returned.
+Install a module and its dependencies. Because there are potentially a lot of module activations created in the DB, a list of entities is returned. Leaving `hash` empty will install the latest built commit.
 
 ## PUT /module_activations/:activation_id
 
-**Parameters:** `name_overwrite`
+**Parameters:** `name_overwrite`, `module` (all optional)
 
 **Responses:**
 * 400 Bad Request in case of validation error
 * 204 No Content (no JSON) in case of success
+
+Specifying `module` will overwrite its contents with the given one. These *hotloaded modules* can be cleared with `POST /module_activations/clear_hotloaded`.
 
 ## DELETE /module_activations/:activation_id
 
@@ -781,6 +717,13 @@ Install a module and its dependencies. Because there are potentially a lot of mo
 
 **Responses:**
 * 204 No Content (no JSON) in case of success
+
+## POST /module_activations/clear_hotloaded
+
+**Parameters:** None
+
+**Responses**:
+* 204 No Content
 
 ## GET /modules/:module_identifier/view/:template_identifier
 

@@ -25,18 +25,14 @@ Example:
 ```
 [module]
 
-id = com.myorganisation.apps.example
 name = example
 short_description = A simple module
-version = 1.0
 type = patient
 ```
 
-* `id` gives a unique identifier to the module, it is a good idea to prefix with a Java-style prefix to avoid name clashes.
 * `parent` is the identifier of the optional parent module from which sections are inherited.
 * `name` is the name displayed to the user.
 * `short_description` is a small description in a few words of what the application does.
-* `version` is used for dependencies and must be formatted as such: `M.m` where M is the major version which changes only when some modifications are not compatible with the previous version and m is the minor version which changes with retro-compatible modifications. For bug fixes, the version does not need to be changed; that way, the module will automatically be updated on the servers.
 * `type` is optional and can be set to either `user` or `patient` (default).
 
 ## dependencies (optional, can have many)
