@@ -689,17 +689,46 @@ Return the list of all module activations, that is, all the entities in the DB e
 
 ## POST /module_activations
 
-**Parameters:** `module_identifier`, `version`, `name_overwrite` (optional), `hash` (optional)
+**Parameters:** `module_identifier`, `version`, `name_overwrite` (optional), `hash` (optional), `dry_run` (optional, boolean)
 
 **Responses:**
-* 200 OK with a JSON like this: `{"module_activations": [ENTITIES]}`.
+* 200 OK with a JSON like this: `{"plan": [OBJECT]}`.
 * 202 Accepted if the installation is running but has not finished yet.
 * 400 Bad Request in case of a validation error.
 * 409 Conflict in case of a problem with the module dependencies.
 * 503 Service Unavailable with `{"error": "Too many tasks are running already."}`.
 * 500 Internal Server Error with a JSON like this: `{"error": "Task failed: some error message"}`.
 
-Install a module and its dependencies. Because there are potentially a lot of module activations created in the DB, a list of entities is returned. Leaving `hash` empty will install the latest built commit.
+Install a module and its dependencies. The installation plan is returned. Leaving `hash` empty will install the latest built commit.
+
+## POST /module_activations/upgrade
+
+**Parameters:** `dry_run` (optional, boolean)
+
+**Responses:**
+* 200 OK with a JSON like this: `{"plan": [OBJECT]}`.
+* 202 Accepted if the installation is running but has not finished yet.
+* 400 Bad Request in case of a validation error.
+* 409 Conflict in case of a problem with the module dependencies.
+* 503 Service Unavailable with `{"error": "Too many tasks are running already."}`.
+* 500 Internal Server Error with a JSON like this: `{"error": "Task failed: some error message"}`.
+
+Upgrade all modules if possible. It might not find a suitable upgrade plan in
+which an administrator would need to upgrade specific modules manually.
+
+## POST /module_activations/:activation_id/upgrade
+
+**Parameters:** `version`, `name_overwrite` (optional), `hash` (optional), `dry_run` (optional, boolean)
+
+**Responses:**
+* 200 OK with a JSON like this: `{"plan": [OBJECT]}`.
+* 202 Accepted if the installation is running but has not finished yet.
+* 400 Bad Request in case of a validation error.
+* 409 Conflict in case of a problem with the module dependencies.
+* 503 Service Unavailable with `{"error": "Too many tasks are running already."}`.
+* 500 Internal Server Error with a JSON like this: `{"error": "Task failed: some error message"}`.
+
+Upgrade a module and its dependencies if necessary. The upgrade plan is returned. Leaving `hash` empty will install the latest built commit.
 
 ## PUT /module_activations/:activation_id
 
@@ -713,10 +742,15 @@ Specifying `module` will overwrite its contents with the given one. These *hotlo
 
 ## DELETE /module_activations/:activation_id
 
-**Parameters:** `clear_data` (optional, boolean)
+**Parameters:** `clear_data` (optional, boolean), `dry_run` (optional, boolen)
 
 **Responses:**
-* 204 No Content (no JSON) in case of success
+* 200 OK with a JSON body like this: `{"plan": [OBJECT]}`
+* 202 Accepted if the installation is running but has not finished yet.
+* 400 Bad Request in case of a validation error.
+* 409 Conflict in case of a problem with the module dependencies.
+* 503 Service Unavailable with `{"error": "Too many tasks are running already."}`.
+* 500 Internal Server Error with a JSON like this: `{"error": "Task failed: some error message"}`.
 
 ## POST /module_activations/clear_hotloaded
 
